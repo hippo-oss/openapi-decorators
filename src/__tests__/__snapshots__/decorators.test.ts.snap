@@ -1,0 +1,250 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`decorators generates OpenAPI spec 1`] = `
+Object {
+  "components": Object {
+    "schemas": Object {
+      "Example": Object {
+        "enum": Array [
+          "Value",
+        ],
+        "type": "string",
+      },
+      "ExampleDTO": Object {
+        "properties": Object {
+          "nullableBooleanValue": Object {
+            "nullable": true,
+            "type": "boolean",
+          },
+          "nullableDateStringValue": Object {
+            "format": "date",
+            "nullable": true,
+            "type": "string",
+          },
+          "nullableDateValue": Object {
+            "format": "date-time",
+            "nullable": true,
+            "type": "string",
+          },
+          "nullableEnumValue": Object {
+            "$ref": "#/components/schemas/Example",
+            "nullable": true,
+          },
+          "nullableIntegerValue": Object {
+            "nullable": true,
+            "type": "integer",
+          },
+          "nullableNestedValue": Object {
+            "allOf": Array [
+              Object {
+                "$ref": "#/components/schemas/NestedNullableExample",
+              },
+            ],
+            "nullable": true,
+          },
+          "nullableNumberValue": Object {
+            "nullable": true,
+            "type": "number",
+          },
+          "nullableObjectArrayValue": Object {
+            "items": Object {
+              "$ref": "#/components/schemas/NestedNullableExample",
+            },
+            "nullable": true,
+            "type": "array",
+          },
+          "nullablePrimitiveArrayValue": Object {
+            "items": Object {
+              "type": "number",
+            },
+            "nullable": true,
+            "type": "array",
+          },
+          "nullableStringValue": Object {
+            "nullable": true,
+            "type": "string",
+          },
+          "nullableUUIDValue": Object {
+            "format": "uuid",
+            "nullable": true,
+            "type": "string",
+          },
+          "optionalBooleanValue": Object {
+            "type": "boolean",
+          },
+          "optionalDateStringValue": Object {
+            "format": "date",
+            "type": "string",
+          },
+          "optionalDateValue": Object {
+            "format": "date-time",
+            "type": "string",
+          },
+          "optionalEnumValue": Object {
+            "$ref": "#/components/schemas/Example",
+          },
+          "optionalIntegerValue": Object {
+            "type": "integer",
+          },
+          "optionalNestedValue": Object {
+            "$ref": "#/components/schemas/NestedOptionalExample",
+          },
+          "optionalNumberValue": Object {
+            "type": "number",
+          },
+          "optionalObjectArrayValue": Object {
+            "items": Object {
+              "$ref": "#/components/schemas/NestedOptionalExample",
+            },
+            "type": "array",
+          },
+          "optionalPrimitiveArrayValue": Object {
+            "items": Object {
+              "type": "number",
+            },
+            "type": "array",
+          },
+          "optionalStringValue": Object {
+            "type": "string",
+          },
+          "optionalUUIDValue": Object {
+            "format": "uuid",
+            "type": "string",
+          },
+          "requiredBooleanValue": Object {
+            "type": "boolean",
+          },
+          "requiredDateStringValue": Object {
+            "format": "date",
+            "type": "string",
+          },
+          "requiredDateValue": Object {
+            "format": "date-time",
+            "type": "string",
+          },
+          "requiredEnumValue": Object {
+            "$ref": "#/components/schemas/Example",
+          },
+          "requiredIntegerValue": Object {
+            "type": "integer",
+          },
+          "requiredNestedValue": Object {
+            "$ref": "#/components/schemas/NestedRequiredExample",
+          },
+          "requiredNumberValue": Object {
+            "type": "number",
+          },
+          "requiredObjectArrayValue": Object {
+            "items": Object {
+              "$ref": "#/components/schemas/NestedRequiredExample",
+            },
+            "type": "array",
+          },
+          "requiredPrimitiveArrayValue": Object {
+            "items": Object {
+              "type": "number",
+            },
+            "type": "array",
+          },
+          "requiredStringValue": Object {
+            "type": "string",
+          },
+          "requiredUUIDValue": Object {
+            "format": "uuid",
+            "type": "string",
+          },
+          "string_value_with_different_casing": Object {
+            "type": "string",
+          },
+        },
+        "required": Array [
+          "requiredObjectArrayValue",
+          "requiredPrimitiveArrayValue",
+          "requiredBooleanValue",
+          "requiredDateStringValue",
+          "requiredDateValue",
+          "requiredEnumValue",
+          "requiredIntegerValue",
+          "requiredNestedValue",
+          "requiredNumberValue",
+          "requiredStringValue",
+          "requiredUUIDValue",
+          "nullableObjectArrayValue",
+          "nullablePrimitiveArrayValue",
+          "nullableBooleanValue",
+          "nullableDateStringValue",
+          "nullableDateValue",
+          "nullableEnumValue",
+          "nullableIntegerValue",
+          "nullableNestedValue",
+          "nullableNumberValue",
+          "nullableStringValue",
+          "nullableUUIDValue",
+          "string_value_with_different_casing",
+        ],
+        "type": "object",
+      },
+      "NestedNullableExample": Object {
+        "properties": Object {
+          "nullableStringValue": Object {
+            "nullable": true,
+            "type": "string",
+          },
+        },
+        "required": Array [
+          "nullableStringValue",
+        ],
+        "type": "object",
+      },
+      "NestedOptionalExample": Object {
+        "properties": Object {
+          "optionalStringValue": Object {
+            "type": "string",
+          },
+        },
+        "type": "object",
+      },
+      "NestedRequiredExample": Object {
+        "properties": Object {
+          "requiredStringValue": Object {
+            "type": "string",
+          },
+        },
+        "required": Array [
+          "requiredStringValue",
+        ],
+        "type": "object",
+      },
+    },
+  },
+  "info": Object {
+    "contact": Object {},
+    "description": "",
+    "title": "Example",
+    "version": "1.0.0",
+  },
+  "openapi": "3.0.0",
+  "paths": Object {
+    "/example": Object {
+      "get": Object {
+        "operationId": "ExampleController_find",
+        "parameters": Array [],
+        "responses": Object {
+          "200": Object {
+            "content": Object {
+              "application/json": Object {
+                "schema": Object {
+                  "$ref": "#/components/schemas/ExampleDTO",
+                },
+              },
+            },
+            "description": "",
+          },
+        },
+      },
+    },
+  },
+  "servers": Array [],
+  "tags": Array [],
+}
+`;

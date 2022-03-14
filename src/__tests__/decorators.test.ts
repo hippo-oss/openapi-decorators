@@ -1,68 +1,35 @@
-import {
-    IsBoolean,
-    IsDate,
-    IsDateString,
-    IsEnum,
-    IsInteger,
-    IsNested,
-    IsNumber,
-    IsString,
-    IsUUID,
-} from '../decorators';
+import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
+import { Test } from '@nestjs/testing';
+
+import { ExampleController } from './fixtures';
 
 describe('decorators', () => {
-    it('transforms and validates', () => {
-        enum FixtureEnum {
-            Foo = 'Foo',
-            Bar = 'Bar',
-        }
+    it('generates OpenAPI spec', async () => {
+        const moduleRef = await Test.createTestingModule({
+            controllers: [
+                ExampleController,
+            ],
+        }).compile();
 
-        class FixtureChild {
-            @IsString({
-            })
-            name!: string;
-        }
+        const app = moduleRef.createNestApplication();
 
-        class Fixture {
-            @IsBoolean({
-            })
-            booleanValue!: boolean;
+        const options = new DocumentBuilder()
+            .setTitle('Example')
+            .build();
 
-            @IsDate({
-            })
-            dateValue!: Date;
+        const document = SwaggerModule.createDocument(app, options);
 
-            @IsDateString({
-            })
-            dateStringValue!: string;
+        const response = document.paths['/example']?.get?.responses[200];
+        expect(response).toMatchObject({
+            content: {
+                'application/json': {
+                    schema: {
+                        $ref: '#/components/schemas/ExampleDTO',
+                    },
+                },
+            },
+        });
 
-            @IsEnum({
-                enum: FixtureEnum,
-            })
-            enumValue!: FixtureEnum;
-
-            @IsInteger({
-            })
-            integerValue!: number;
-
-            @IsNested({
-                type: FixtureChild,
-            })
-            nestedValue!: FixtureChild;
-
-            @IsNumber({
-            })
-            numberValue!: number;
-
-            @IsString({
-            })
-            stringValue!: string;
-
-            @IsUUID({
-            })
-            uuidValue!: string;
-        }
-
-        expect(Fixture).toBeDefined();
+        expect(document).toMatchSnapshot();
     });
 });

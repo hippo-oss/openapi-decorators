@@ -1,19 +1,4 @@
-import { DTODecoratorFactories } from '@hippo-oss/dto-decorators';
-
-const noop = () => null;
-const noopFactory = () => noop;
-
-export const OPENAPI_DECORATORS: DTODecoratorFactories = {
-    IsBoolean: noopFactory,
-    IsDate: noopFactory,
-    IsDateString: noopFactory,
-    IsEnum: noopFactory,
-    IsInteger: noopFactory,
-    IsNested: noopFactory,
-    IsNumber: noopFactory,
-    IsString: noopFactory,
-    IsUUID: noopFactory,
-};
+import { OPENAPI_DECORATORS } from './openapi';
 
 export const {
     IsBoolean,
