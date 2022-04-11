@@ -3,7 +3,7 @@ import { ApiProperty } from '@nestjs/swagger';
 
 import { createBaseApiPropertyOptions } from './base';
 
-export function IsInteger(options: IsIntegerOptions): PropertyDecorator {
+export function IsInteger(options: IsIntegerOptions = {}): PropertyDecorator {
     return ApiProperty({
         ...createBaseApiPropertyOptions(options),
 

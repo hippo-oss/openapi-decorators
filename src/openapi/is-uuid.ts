@@ -3,7 +3,7 @@ import { ApiProperty } from '@nestjs/swagger';
 
 import { createBaseApiPropertyOptions } from './base';
 
-export function IsUUID(options: IsUUIDOptions): PropertyDecorator {
+export function IsUUID(options: IsUUIDOptions = {}): PropertyDecorator {
     return ApiProperty({
         ...createBaseApiPropertyOptions(options),
 

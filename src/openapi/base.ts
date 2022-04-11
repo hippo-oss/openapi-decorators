@@ -1,7 +1,7 @@
 import { ArraySizeOptions, BaseOptions } from '@hippo-oss/dto-decorators';
 import { ApiPropertyOptions } from '@nestjs/swagger';
 
-export function toArraySizeOptions(options: BaseOptions): ArraySizeOptions | undefined {
+export function toArraySizeOptions(options: BaseOptions = {}): ArraySizeOptions | undefined {
     if (options.isArray === undefined || options.isArray === false || options.isArray === true) {
         return undefined;
     }
@@ -9,7 +9,7 @@ export function toArraySizeOptions(options: BaseOptions): ArraySizeOptions | und
     return options.isArray;
 }
 
-export function createBaseApiPropertyOptions(options: BaseOptions): ApiPropertyOptions {
+export function createBaseApiPropertyOptions(options: BaseOptions = {}): ApiPropertyOptions {
     const arraySizeOptions = toArraySizeOptions(options);
 
     return {

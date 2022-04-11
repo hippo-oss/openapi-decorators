@@ -18,8 +18,7 @@ enum ExampleEnum {
 }
 
 class NestedRequiredExample {
-    @IsString({
-    })
+    @IsString()
     requiredStringValue!: string;
 }
 
@@ -52,16 +51,13 @@ class ExampleDTO {
     })
     requiredPrimitiveArrayValue!: number[];
 
-    @IsBoolean({
-    })
+    @IsBoolean()
     requiredBooleanValue!: boolean;
 
-    @IsDateString({
-    })
+    @IsDateString()
     requiredDateStringValue!: string;
 
-    @IsDate({
-    })
+    @IsDate()
     requiredDateValue!: Date;
 
     @IsEnum({
@@ -70,8 +66,7 @@ class ExampleDTO {
     })
     requiredEnumValue!: ExampleEnum;
 
-    @IsInteger({
-    })
+    @IsInteger()
     requiredIntegerValue!: number;
 
     @IsNested({
@@ -79,16 +74,13 @@ class ExampleDTO {
     })
     requiredNestedValue!: NestedRequiredExample;
 
-    @IsNumber({
-    })
+    @IsNumber()
     requiredNumberValue!: number;
 
-    @IsString({
-    })
+    @IsString()
     requiredStringValue!: string;
 
-    @IsUUID({
-    })
+    @IsUUID()
     requiredUUIDValue!: string;
 
     @IsNested({

@@ -3,7 +3,7 @@ import { ApiProperty } from '@nestjs/swagger';
 
 import { createBaseApiPropertyOptions } from './base';
 
-export function IsDate(options: IsDateOptions): PropertyDecorator {
+export function IsDate(options: IsDateOptions = {}): PropertyDecorator {
     return ApiProperty({
         ...createBaseApiPropertyOptions(options),
 
