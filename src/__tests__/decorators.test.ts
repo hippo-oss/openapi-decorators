@@ -1,23 +1,10 @@
-import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
-import { Test } from '@nestjs/testing';
-
-import { ExampleController } from './fixtures';
+import { ExampleDTO, createController, createDocument } from './fixtures';
 
 describe('decorators', () => {
     it('generates OpenAPI spec', async () => {
-        const moduleRef = await Test.createTestingModule({
-            controllers: [
-                ExampleController,
-            ],
-        }).compile();
+        const ExampleController = createController(ExampleDTO);
 
-        const app = moduleRef.createNestApplication();
-
-        const options = new DocumentBuilder()
-            .setTitle('Example')
-            .build();
-
-        const document = SwaggerModule.createDocument(app, options);
+        const document = await createDocument(ExampleController);
 
         const response = document.paths['/example']?.get?.responses[200];
         expect(response).toMatchObject({
