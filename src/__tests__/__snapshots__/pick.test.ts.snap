@@ -1,0 +1,272 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`pick picks a single field 1`] = `
+Object {
+  "components": Object {
+    "schemas": Object {
+      "ParentFixture": Object {
+        "properties": Object {
+          "foo": Object {
+            "type": "string",
+          },
+        },
+        "required": Array [
+          "foo",
+        ],
+        "type": "object",
+      },
+    },
+  },
+  "info": Object {
+    "contact": Object {},
+    "description": "",
+    "title": "Example",
+    "version": "1.0.0",
+  },
+  "openapi": "3.0.0",
+  "paths": Object {
+    "/example": Object {
+      "get": Object {
+        "operationId": "ExampleController_find",
+        "parameters": Array [],
+        "responses": Object {
+          "200": Object {
+            "content": Object {
+              "application/json": Object {
+                "schema": Object {
+                  "$ref": "#/components/schemas/ParentFixture",
+                },
+              },
+            },
+            "description": "",
+          },
+        },
+      },
+    },
+  },
+  "servers": Array [],
+  "tags": Array [],
+}
+`;
+
+exports[`pick picks child fields 1`] = `
+Object {
+  "components": Object {
+    "schemas": Object {
+      "Child": Object {
+        "properties": Object {
+          "baz": Object {
+            "type": "string",
+          },
+          "qux": Object {
+            "type": "string",
+          },
+        },
+        "required": Array [
+          "baz",
+          "qux",
+        ],
+        "type": "object",
+      },
+      "ParentFixture": Object {
+        "properties": Object {
+          "child": Object {
+            "$ref": "#/components/schemas/Child",
+          },
+        },
+        "required": Array [
+          "child",
+        ],
+        "type": "object",
+      },
+    },
+  },
+  "info": Object {
+    "contact": Object {},
+    "description": "",
+    "title": "Example",
+    "version": "1.0.0",
+  },
+  "openapi": "3.0.0",
+  "paths": Object {
+    "/example": Object {
+      "get": Object {
+        "operationId": "ExampleController_find",
+        "parameters": Array [],
+        "responses": Object {
+          "200": Object {
+            "content": Object {
+              "application/json": Object {
+                "schema": Object {
+                  "$ref": "#/components/schemas/ParentFixture",
+                },
+              },
+            },
+            "description": "",
+          },
+        },
+      },
+    },
+  },
+  "servers": Array [],
+  "tags": Array [],
+}
+`;
+
+exports[`pick picks one field and one child field 1`] = `
+Object {
+  "components": Object {
+    "schemas": Object {
+      "ChildFixture": Object {
+        "properties": Object {
+          "baz": Object {
+            "type": "string",
+          },
+        },
+        "required": Array [
+          "baz",
+        ],
+        "type": "object",
+      },
+      "ParentFixture": Object {
+        "properties": Object {
+          "child": Object {
+            "$ref": "#/components/schemas/ChildFixture",
+          },
+          "foo": Object {
+            "type": "string",
+          },
+        },
+        "required": Array [
+          "foo",
+          "child",
+        ],
+        "type": "object",
+      },
+    },
+  },
+  "info": Object {
+    "contact": Object {},
+    "description": "",
+    "title": "Example",
+    "version": "1.0.0",
+  },
+  "openapi": "3.0.0",
+  "paths": Object {
+    "/example": Object {
+      "get": Object {
+        "operationId": "ExampleController_find",
+        "parameters": Array [],
+        "responses": Object {
+          "200": Object {
+            "content": Object {
+              "application/json": Object {
+                "schema": Object {
+                  "$ref": "#/components/schemas/ParentFixture",
+                },
+              },
+            },
+            "description": "",
+          },
+        },
+      },
+    },
+  },
+  "servers": Array [],
+  "tags": Array [],
+}
+`;
+
+exports[`pick picks zero fields 1`] = `
+Object {
+  "components": Object {
+    "schemas": Object {
+      "ParentFixture": Object {
+        "properties": Object {},
+        "type": "object",
+      },
+    },
+  },
+  "info": Object {
+    "contact": Object {},
+    "description": "",
+    "title": "Example",
+    "version": "1.0.0",
+  },
+  "openapi": "3.0.0",
+  "paths": Object {
+    "/example": Object {
+      "get": Object {
+        "operationId": "ExampleController_find",
+        "parameters": Array [],
+        "responses": Object {
+          "200": Object {
+            "content": Object {
+              "application/json": Object {
+                "schema": Object {
+                  "$ref": "#/components/schemas/ParentFixture",
+                },
+              },
+            },
+            "description": "",
+          },
+        },
+      },
+    },
+  },
+  "servers": Array [],
+  "tags": Array [],
+}
+`;
+
+exports[`pick redefines a field from a grand parent 1`] = `
+Object {
+  "components": Object {
+    "schemas": Object {
+      "ChildFixture": Object {
+        "properties": Object {
+          "keep": Object {
+            "type": "string",
+          },
+          "redefine": Object {
+            "type": "integer",
+          },
+        },
+        "required": Array [
+          "keep",
+        ],
+        "type": "object",
+      },
+    },
+  },
+  "info": Object {
+    "contact": Object {},
+    "description": "",
+    "title": "Example",
+    "version": "1.0.0",
+  },
+  "openapi": "3.0.0",
+  "paths": Object {
+    "/example": Object {
+      "get": Object {
+        "operationId": "ExampleController_find",
+        "parameters": Array [],
+        "responses": Object {
+          "200": Object {
+            "content": Object {
+              "application/json": Object {
+                "schema": Object {
+                  "$ref": "#/components/schemas/ChildFixture",
+                },
+              },
+            },
+            "description": "",
+          },
+        },
+      },
+    },
+  },
+  "servers": Array [],
+  "tags": Array [],
+}
+`;

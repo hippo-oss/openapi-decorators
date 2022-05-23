@@ -1,5 +1,6 @@
-import { Controller, Get } from '@nestjs/common';
-import { ApiOkResponse } from '@nestjs/swagger';
+import { Controller, Get, Type } from '@nestjs/common';
+import { ApiOkResponse, DocumentBuilder, OpenAPIObject, SwaggerModule } from '@nestjs/swagger';
+import { Test } from '@nestjs/testing';
 
 import {
     IsBoolean,
@@ -36,7 +37,7 @@ class NestedNullableExample {
     nullableStringValue!: string | null;
 }
 
-class ExampleDTO {
+export class ExampleDTO {
 
     /* Create one property of each type that is required. */
 
@@ -217,15 +218,36 @@ class ExampleDTO {
     stringValueWithDifferentCasing!: string;
 }
 
-@Controller('example')
-export class ExampleController {
+export function createController(DTO: Type): Type {
 
-    @Get()
-    // NB: we normally rely on the OpenAPI CLI plugin to inject response decorators
-    @ApiOkResponse({
-        type: ExampleDTO,
-    })
-    public find(): ExampleDTO {
-        return {} as unknown as ExampleDTO;
+    @Controller('example')
+    class ExampleController {
+
+        @Get()
+        // NB: we normally rely on the OpenAPI CLI plugin to inject response decorators
+        @ApiOkResponse({
+            type: DTO,
+        })
+        public find(): typeof DTO {
+            return {} as unknown as typeof DTO;
+        }
     }
+
+    return ExampleController;
+}
+
+export async function createDocument(ExampleController: Type): Promise<OpenAPIObject> {
+    const moduleRef = await Test.createTestingModule({
+        controllers: [
+            ExampleController,
+        ],
+    }).compile();
+
+    const app = moduleRef.createNestApplication();
+
+    const options = new DocumentBuilder()
+        .setTitle('Example')
+        .build();
+
+    return SwaggerModule.createDocument(app, options);
 }

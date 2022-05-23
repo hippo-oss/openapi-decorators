@@ -21,3 +21,5 @@ export const OPENAPI_DECORATORS: DTODecoratorFactories = {
     IsString,
     IsUUID,
 };
+
+export * from './pick';
